@@ -7,3 +7,6 @@ Like [Remodel](https://github.com/rojo-rbx/remodel) or [Lune](https://github.com
 
 N/A
 
+## License
+
+THis project is under the [MPL-2.0 license](https://github.com/ccuser44/model-tinker/blob/main/LICENSE.txt).
