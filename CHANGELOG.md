@@ -1,16 +1,20 @@
 <!-- markdownlint-disable MD023 -->
 <!-- markdownlint-disable MD033 -->
 
-# Changelog
+## Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## `0.8.0` - January 14th, 2024
+## Lune changelog
 
-### Breaking Changes
+Below is the imported changelog from Lune due to the project forking lune
+
+### `0.8.0` - January 14th, 2024
+
+#### Breaking Changes
 
 - The Lune CLI now uses subcommands instead of flag options: <br/>
 
@@ -24,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The `Lune` struct has been renamed to `Runtime` in the Lune rust crate.
 
-### Added
+#### Added
 
 - Added support for compiling single Lune scripts into standalone executables! ([#140])
 
@@ -37,12 +41,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   ```sh
   > lune build my_cool_script.luau
-  # Creates `my_cool_script.exe` (Windows) or `my_cool_script` (macOS / Linux)
+  ## Creates `my_cool_script.exe` (Windows) or `my_cool_script` (macOS / Linux)
   ```
 
   ```sh
-  > ./my_cool_script.exe # Windows
-  > ./my_cool_script # macOS / Linux
+  > ./my_cool_script.exe ## Windows
+  > ./my_cool_script ## macOS / Linux
   > "Hello, standalone!"
   ```
 
@@ -102,40 +106,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [#140]: https://github.com/lune-org/lune/pull/140
 
-### Changed
+#### Changed
 
 - Update to Luau version `0.606`.
 
-### Fixed
+#### Fixed
 
 - Fixed the `print` and `warn` global functions yielding the thread, preventing them from being used in places such as the callback to `table.sort`.
 - Fixed the `overwrite` option for `fs.move` not correctly removing existing files / directories. ([#133])
 
 [#133]: https://github.com/lune-org/lune/pull/133
 
-## `0.7.11` - October 29th, 2023
+### `0.7.11` - October 29th, 2023
 
-### Changed
+#### Changed
 
 - Update to Luau version `0.601`.
 
-### Fixed
+#### Fixed
 
 - Fixed `roblox.getAuthCookie` not being compatible with the latest cookie format by upgrading rbx_cookie.
 
-## `0.7.10` - October 25th, 2023
+### `0.7.10` - October 25th, 2023
 
-### Added
+#### Added
 
 - Added the `GetDebugId` instance method to the `roblox` built-in. This will return the internal id used by the instance, and as the name implies, it should be primarily used for _debugging_ purposes and cases where you need a globally unique identifier for an instance. It is guaranteed to be a 32-digit hexadecimal string.
 
-### Fixed
+#### Fixed
 
 - Fixed issues with `SecurityCapabilities` on instances in the `roblox` built-in by upgrading rbx-dom.
 
-## `0.7.9` - October 21st, 2023
+### `0.7.9` - October 21st, 2023
 
-### Added
+#### Added
 
 - Added `implementProperty` and `implementMethod` to the `roblox` built-in library to fill in missing functionality that Lune does not aim to implement itself.
 
@@ -153,14 +157,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   part:TestMethod("Hello", "world!")
   ```
 
-### Changed
+#### Changed
 
 - Update to Luau version `0.599`.
 - Stdio options when using `process.spawn` can now be set with more granularity, allowing stderr & stdout to be disabled individually and completely to improve memory usage when they are not being used.
 
-## `0.7.8` - October 5th, 2023
+### `0.7.8` - October 5th, 2023
 
-### Added
+#### Added
 
 - Added a new `datetime` built-in library for handling date & time values, parsing, formatting, and more. ([#94])
 
@@ -207,14 +211,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added [Terrain:GetMaterialColor](https://create.roblox.com/docs/reference/engine/classes/Terrain#GetMaterialColor) and [Terrain:SetMaterialColor](https://create.roblox.com/docs/reference/engine/classes/Terrain#SetMaterialColor) ([#93])
 - Added support for a variable number of arguments for CFrame methods ([#85])
 
-### Changed
+#### Changed
 
 - Update to Luau version `0.596`.
 - Update to rbx-dom database version `0.596`.
 - `process.spawn` now uses `powershell` instead of `/bin/bash` as the shell on Windows, with `shell = true`.
 - CFrame and Vector3 values are now rounded to the nearest 2 ^ 16 decimal place to reduce floating point errors and diff noise. Note that this does not affect intermediate calculations done in lua, and only happens when a property value is set on an Instance.
 
-### Fixed
+#### Fixed
 
 - Fixed the `process` built-in library not loading correctly when using Lune in REPL mode.
 - Fixed list subcommand not listing global scripts without a local `.lune` / `lune` directory present.
@@ -232,9 +236,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#106]: https://github.com/lune-org/lune/pull/106
 [#117]: https://github.com/lune-org/lune/pull/117
 
-## `0.7.7` - August 23rd, 2023
+### `0.7.7` - August 23rd, 2023
 
-### Added
+#### Added
 
 - Added a [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) to Lune. ([#83])
 
@@ -243,29 +247,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Example usage, inside your favorite terminal:
 
   ```bash
-  # 1. Run the Lune executable, without any arguments
+  ## 1. Run the Lune executable, without any arguments
   lune
 
-  # 2. You will be shown the current Lune version and a blank prompt arrow:
+  ## 2. You will be shown the current Lune version and a blank prompt arrow:
   Lune v0.7.7
   >
 
-  # 3. Start typing, and hit enter when you want to run your script!
-  #    Your script will run until completion and output things along the way.
+  ## 3. Start typing, and hit enter when you want to run your script!
+  ##    Your script will run until completion and output things along the way.
   > print(2 + 3)
   5
   > print("Hello, lune changelog!")
   Hello, lune changelog!
 
-  # 4. You can also set variables that will get preserved between runs.
-  #    Note that local variables do not get preserved here.
+  ## 4. You can also set variables that will get preserved between runs.
+  ##    Note that local variables do not get preserved here.
   > myVariable = 123
   > print(myVariable)
   123
 
-  # 5. Press either of these key combinations to exit the REPL:
-  #    - Ctrl + D
-  #    - Ctrl + C
+  ## 5. Press either of these key combinations to exit the REPL:
+  ##    - Ctrl + D
+  ##    - Ctrl + C
   ```
 
 - Added a new `luau` built-in library for manually compiling and loading Luau source code. ([#82])
@@ -287,7 +291,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   callableFn2()
   ```
 
-### Changed
+#### Changed
 
 - Update to Luau version `0.591`.
 - Lune's internal task scheduler and `require` functionality has been completely rewritten. <br/>
@@ -300,7 +304,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - When using the `serde` built-in library, keys are now sorted during serialization. This means that the output of `encode` is now completely deterministic, and wont cause issues when committing generated files to git etc.
 
-### Fixed
+#### Fixed
 
 - Fixed not being able to pass arguments to the thread using `coroutine.resume`. ([#86])
 - Fixed a large number of long-standing issues, from the task scheduler rewrite:
@@ -314,24 +318,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#83]: https://github.com/lune-org/lune/pull/83
 [#86]: https://github.com/lune-org/lune/pull/86
 
-## `0.7.6` - August 9th, 2023
+### `0.7.6` - August 9th, 2023
 
-### Changed
+#### Changed
 
 - Update to Luau version `0.588`
 - Enabled Luau JIT backend for potential performance improvements 🚀 <br/>
   If you run into any strange behavior please open an issue!
 
-### Fixed
+#### Fixed
 
 - Fixed publishing of the Lune library to `crates.io`
 - Fixed `serde.decode` deserializing `null` values as `userdata` instead of `nil`.
 - Fixed not being able to require files with multiple extensions, eg. `module.spec.luau` was not require-able using `require("module.spec")`.
 - Fixed instances and `roblox` built-in library APIs erroring when used asynchronously/concurrently.
 
-## `0.7.5` - July 22nd, 2023
+### `0.7.5` - July 22nd, 2023
 
-### Added
+#### Added
 
 - Lune now has a new documentation site! </br>
   This addresses new APIs from version `0.7.0` not being available on the docs site, brings much improved searching functionality, and will help us keep documentation more up-to-date going forward with a more automated process. You can check out the new site at [lune-org.github.io](https://lune-org.github.io/docs).
@@ -396,11 +400,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added support for running directories with an `init.luau` or `init.lua` file in them in the CLI.
 
-### Changed
+#### Changed
 
 - Update to Luau version `0.583`
 
-### Fixed
+#### Fixed
 
 - Fixed publishing of Lune to crates.io by migrating away from a monorepo.
 - Fixed crashes when writing a very deeply nested `Instance` to a file. ([#62])
@@ -411,52 +415,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#68]: https://github.com/lune-org/lune/pull/66
 [#72]: https://github.com/lune-org/lune/pull/72
 
-## `0.7.4` - July 7th, 2023
+### `0.7.4` - July 7th, 2023
 
-### Added
+#### Added
 
 - Added support for `CFrame` and `Font` types in attributes when using the `roblox` builtin.
 
-### Fixed
+#### Fixed
 
 - Fixed `roblox.serializeModel` still keeping some unique ids.
 
-## `0.7.3` - July 5th, 2023
+### `0.7.3` - July 5th, 2023
 
-### Changed
+#### Changed
 
 - When using `roblox.serializeModel`, Lune will no longer keep internal unique ids. <br/>
   This is consistent with what Roblox does and prevents Lune from always generating a new and unique file. <br/>
   This previously caused unnecessary diffs when using git or other kinds of source control. ([Relevant issue](https://github.com/lune-org/lune/issues/61))
 
-## `0.7.2` - June 28th, 2023
+### `0.7.2` - June 28th, 2023
 
-### Added
+#### Added
 
 - Added support for `init` files in directories, similar to Rojo, or `index.js` / `mod.rs` in JavaScript / Rust. <br/>
   This means that placing a file named `init.luau` or `init.lua` in a directory will now let you `require` that directory.
 
-### Changed
+#### Changed
 
 - The `lune --setup` command is now much more user-friendly.
 - Update to Luau version `0.581`
 
-## `0.7.1` - June 17th, 2023
+### `0.7.1` - June 17th, 2023
 
-### Added
+#### Added
 
 - Added support for TLS in websockets, enabling usage of `wss://`-prefixed URLs. ([#57])
 
-### Fixed
+#### Fixed
 
 - Fixed `closeCode` erroring when being accessed on websockets. ([#57])
 - Fixed issues with `UniqueId` when using the `roblox` builtin by downgrading `rbx-dom`.
 
 [#57]: https://github.com/lune-org/lune/pull/57
 
-## `0.7.0` - June 12th, 2023
+### `0.7.0` - June 12th, 2023
 
-### Breaking Changes
+#### Breaking Changes
 
 - Globals for the `fs`, `net`, `process`, `stdio`, and `task` builtins have been removed, and the `require("@lune/...")` syntax is now the only way to access builtin libraries. If you have previously been using a global such as `fs` directly, you will now need to put `local fs = require("@lune/fs")` at the top of the file instead.
 
@@ -475,7 +479,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed the global `printinfo` function - it was generally not used, and did not work as intended. Use the `stdio` builtin for formatting and logging instead.
 - Removed support for Windows on ARM - it's more trouble than its worth right now, we may revisit it later.
 
-### Added
+#### Added
 
 - Added `serde.compress` and `serde.decompress` for compressing and decompressing strings using one of several compression formats: `brotli`, `gzip`, `lz4`, or `zlib`.
 
@@ -511,21 +515,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - [`Instance:RemoveTag`](https://create.roblox.com/docs/reference/engine/classes/Instance#RemoveTag)
 - Implemented the second argument of the `FindFirstChild` / `FindFirstChildOfClass` / `FindFirstChildWhichIsA` instance methods.
 
-### Changed
+#### Changed
 
 - Update to Luau version `0.579`
 - Both `stdio.write` and `stdio.ewrite` now support writing arbitrary bytes, instead of only valid UTF-8.
 
-### Fixed
+#### Fixed
 
 - Fixed `stdio.write` and `stdio.ewrite` not being flushed and causing output to be interleaved. ([#47])
 - Fixed `typeof` returning `userdata` for roblox types such as `Instance`, `Vector3`, ...
 
 [#47]: https://github.com/lune-org/lune/pull/47
 
-## `0.6.7` - May 14th, 2023
+### `0.6.7` - May 14th, 2023
 
-### Added
+#### Added
 
 - Replaced all of the separate typedef & documentation generation commands with a unified `lune --setup` command.
 
@@ -538,13 +542,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `lune-macos-0.6.7-aarch64`
 - Added global types to documentation site
 
-## `0.6.6` - April 30th, 2023
+### `0.6.6` - April 30th, 2023
 
-### Added
+#### Added
 
 - Added tracing / logging for rare and hard to diagnose error cases, which can be configured using the env var `RUST_LOG`.
 
-### Changed
+#### Changed
 
 - The `_VERSION` global now follows a consistent format `Lune x.y.z+luau` to allow libraries to check against it for version requirements.
 
@@ -557,28 +561,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated to Luau version `0.573`
 - Updated `rbx-dom` to support reading and writing `Font` datatypes
 
-### Fixed
+#### Fixed
 
 - Fixed `_G` not being a readable & writable table
 - Fixed `_G` containing normal globals such as `print`, `math`, ...
 - Fixed using instances as keys in tables
 
-## `0.6.5` - March 27th, 2023
+### `0.6.5` - March 27th, 2023
 
-### Changed
+#### Changed
 
 - Functions such as `print`, `warn`, ... now respect `__tostring` metamethods.
 
-### Fixed
+#### Fixed
 
 - Fixed access of roblox instance properties such as `Workspace.Terrain`, `game.Workspace` that are actually links to child instances. <br />
   These properties are always guaranteed to exist, and they are not always properly set, meaning they must be found through an internal lookup.
 - Fixed issues with the `CFrame.lookAt` and `CFrame.new(Vector3, Vector3)` constructors.
 - Fixed issues with CFrame math operations returning rotation angles in the wrong order.
 
-## `0.6.4` - March 26th, 2023
+### `0.6.4` - March 26th, 2023
 
-### Fixed
+#### Fixed
 
 - Fixed instances with attributes not saving if they contain integer attributes.
 - Fixed attributes not being set properly if the instance has an empty attributes property.
@@ -586,45 +590,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed crash when trying to access an instance reference property that points to a destroyed instance.
 - Fixed crash when trying to save instances that contain unsupported attribute types.
 
-## `0.6.3` - March 26th, 2023
+### `0.6.3` - March 26th, 2023
 
-### Added
+#### Added
 
 - Added support for instance tags & `CollectionService` in the `roblox` built-in. <br />
   Currently implemented methods are listed on the [docs site](https://lune-org.github.io/docs/roblox/4-api-status).
 
-### Fixed
+#### Fixed
 
 - Fixed accessing a destroyed instance printing an error message even if placed inside a pcall.
 - Fixed cloned instances not having correct instance reference properties set (`ObjectValue.Value`, `Motor6D.Part0`, ...)
 - Fixed `Instance::GetDescendants` returning the same thing as `Instance::GetChildren`.
 
-## `0.6.2` - March 25th, 2023
+### `0.6.2` - March 25th, 2023
 
 This release adds some new features and fixes for the `roblox` built-in.
 
-### Added
+#### Added
 
 - Added `GetAttribute`, `GetAttributes` and `SetAttribute` methods for instances.
 - Added support for getting & setting properties that are instance references.
 
-### Changed
+#### Changed
 
 - Improved handling of optional property types such as optional cframes & default physical properties.
 
-### Fixed
+#### Fixed
 
 - Fixed handling of instance properties that are serialized as binary strings.
 
-## `0.6.1` - March 22nd, 2023
+### `0.6.1` - March 22nd, 2023
 
-### Fixed
+#### Fixed
 
 - Fixed `writePlaceFile` and `writeModelFile` in the new `roblox` built-in making mysterious "ROOT" instances.
 
-## `0.6.0` - March 22nd, 2023
+### `0.6.0` - March 22nd, 2023
 
-### Added
+#### Added
 
 - Added a `roblox` built-in
 
@@ -649,18 +653,18 @@ This release adds some new features and fixes for the `roblox` built-in.
 
 - Added `net.urlEncode` and `net.urlDecode` for URL-encoding and decoding strings
 
-### Changed
+#### Changed
 
 - Renamed the global `info` function to `printinfo` to make it less ambiguous
 
-### Removed
+#### Removed
 
 - Removed experimental `net.encode` and `net.decode` functions, since they are now available using `require("@lune/serde")`
 - Removed option to preserve default Luau require behavior
 
-## `0.5.6` - March 11th, 2023
+### `0.5.6` - March 11th, 2023
 
-### Added
+#### Added
 
 - Added support for shebangs at the top of a script, meaning scripts such as this one will now run without throwing a syntax error:
 
@@ -670,61 +674,61 @@ This release adds some new features and fixes for the `roblox` built-in.
   print("Hello, world!")
   ```
 
-### Fixed
+#### Fixed
 
 - Fixed `fs.writeFile` and `fs.readFile` not working with strings / files that are invalid utf-8
 
-## `0.5.5` - March 8th, 2023
+### `0.5.5` - March 8th, 2023
 
-### Added
+#### Added
 
 - Added support for running scripts by passing absolute file paths in the CLI
   - This does not have the restriction of scripts having to use the `.luau` or `.lua` extension, since it is presumed that if you pass an absolute path you know exactly what you are doing
 
-### Changed
+#### Changed
 
 - Improved error messages for passing invalid file names / file paths substantially - they now include helpful formatting to make file names distinct from file extensions, and give suggestions on how to solve the problem
 - Improved general formatting of error messages, both in the CLI and for Luau scripts being run
 
-### Fixed
+#### Fixed
 
 - Fixed the CLI being a bit too picky about file names when trying to run files in `lune` or `.lune` directories
 - Fixed documentation misses from large changes made in version `0.5.0`
 
-## `0.5.4` - March 7th, 2023
+### `0.5.4` - March 7th, 2023
 
-### Added
+#### Added
 
 - Added support for reading scripts from stdin by passing `"-"` as the script name
 - Added support for close codes in the `net` WebSocket APIs:
   - A close code can be sent by passing it to `socket.close`
   - A received close code can be checked with the `socket.closeCode` value, which is populated after a socket has been closed - note that using `socket.close` will not set the close code value, it is only set when received and is guaranteed to exist after closure
 
-### Changed
+#### Changed
 
 - Update to Luau version 0.566
 
-### Fixed
+#### Fixed
 
 - Fixed scripts having to be valid utf8, they may now use any kind of encoding that base Luau supports
 - The `net` WebSocket APIs will no longer return `nil` for partial messages being received in `socket.next`, and will instead wait for the full message to arrive
 
-## `0.5.3` - February 26th, 2023
+### `0.5.3` - February 26th, 2023
 
-### Fixed
+#### Fixed
 
 - Fixed `lune --generate-selene-types` generating an invalid Selene definitions file
 - Fixed type definition parsing issues on Windows
 
-## `0.5.2` - February 26th, 2023
+### `0.5.2` - February 26th, 2023
 
-### Fixed
+#### Fixed
 
 - Fixed crash when using `stdio.color()` or `stdio.style()` in a CI environment or non-interactive terminal
 
-## `0.5.1` - February 25th, 2023
+### `0.5.1` - February 25th, 2023
 
-### Added
+#### Added
 
 - Added `net.encode` and `net.decode` which are equivalent to `net.jsonEncode` and `net.jsonDecode`, but with support for more formats.
 
@@ -749,13 +753,13 @@ This release adds some new features and fixes for the `roblox` built-in.
   assert(toml.values.epic == true)
   ```
 
-### Fixed
+#### Fixed
 
 - Fixed indentation of closing curly bracket when printing tables
 
-## `0.5.0` - February 23rd, 2023
+### `0.5.0` - February 23rd, 2023
 
-### Added
+#### Added
 
 - Added auto-generated API reference pages and documentation using GitHub wiki pages
 - Added support for `query` in `net.request` parameters, which enables usage of query parameters in URLs without having to manually URL encode values.
@@ -766,7 +770,7 @@ This release adds some new features and fixes for the `roblox` built-in.
   - Ordering of interleaved calls to `task.spawn/task.defer` is now completely deterministic, deferring is now guaranteed to run last even in these cases.
   - The minimum wait time possible when using `task.wait` and minimum delay time using `task.delay` are now much smaller, and only limited by the underlying OS implementation. For most systems this means `task.wait` and `task.delay` are now accurate down to about 5 milliseconds or less.
 
-### Changed
+#### Changed
 
 - Type definitions are now bundled as part of the Lune executable, meaning they no longer need to be downloaded.
   - `lune --generate-selene-types` will generate the Selene type definitions file, replacing `lune --download-selene-types`
@@ -776,24 +780,24 @@ This release adds some new features and fixes for the `roblox` built-in.
 - Improved error handling and messages for `stdio.prompt`
 - File path representations on Windows now use legacy paths instead of UNC paths wherever possible, preventing some confusing cases where file paths don't work as expected
 
-### Fixed
+#### Fixed
 
 - Fixed `process.cwd` not having the correct ending path separator on Windows
 - Fixed remaining edge cases where the `task` and `coroutine` libraries weren't interoperable
 - Fixed `task.delay` keeping the script running even if it was cancelled using `task.cancel`
 - Fixed `stdio.prompt` blocking all other lua threads while prompting for input
 
-## `0.4.0` - February 11th, 2023
+### `0.4.0` - February 11th, 2023
 
-### Added
+#### Added
 
-- ### Web Sockets
+- #### Web Sockets
 
   `net` now supports web sockets for both clients and servers! <br />
   Note that the web socket object is identical on both client and
   server, but how you retrieve a web socket object is different.
 
-  #### Server API
+  ##### Server API
 
   The server web socket API is an extension of the existing `net.serve` function. <br />
   This allows for serving both normal HTTP requests and web socket requests on the same port.
@@ -821,7 +825,7 @@ This release adds some new features and fixes for the `roblox` built-in.
   })
   ```
 
-  #### Client API
+  ##### Client API
 
   Example usage:
 
@@ -843,7 +847,7 @@ This release adds some new features and fixes for the `roblox` built-in.
   until messageFromServer == nil
   ```
 
-### Changed
+#### Changed
 
 - `net.serve` now returns a `NetServeHandle` which can be used to stop serving requests safely.
 
@@ -867,13 +871,13 @@ This release adds some new features and fixes for the `roblox` built-in.
 - The internal http client for `net.request` now reuses headers and connections for more efficient requests.
 - Refactored the Lune rust crate to be much more user-friendly and documented all of the public functions.
 
-### Fixed
+#### Fixed
 
 - Fixed `process.spawn` blocking all lua threads if the spawned child process yields.
 
-## `0.3.0` - February 6th, 2023
+### `0.3.0` - February 6th, 2023
 
-### Added
+#### Added
 
 - Added a new global `stdio` which replaces `console`
 - Added `stdio.write` which writes a string directly to stdout, without any newlines
@@ -898,35 +902,35 @@ This release adds some new features and fixes for the `roblox` built-in.
   )
   ```
 
-### Changed
+#### Changed
 
 - Migrated `console.setColor/resetColor` and `console.setStyle/resetStyle` to `stdio.color` and `stdio.style` to allow for more flexibility in custom printing using ANSI color codes. Check the documentation for new usage and behavior.
 - Migrated the pretty-printing and formatting behavior of `console.log/info/warn/error` to the standard Luau printing functions.
 
-### Removed
+#### Removed
 
 - Removed printing functions `console.log/info/warn/error` in favor of regular global functions for printing.
 
-### Fixed
+#### Fixed
 
 - Fixed scripts hanging indefinitely on error
 
-## `0.2.2` - February 5th, 2023
+### `0.2.2` - February 5th, 2023
 
-### Added
+#### Added
 
 - Added global types for networking & child process APIs
   - `net.request` gets `NetFetchParams` and `NetFetchResponse` for its argument and return value
   - `net.serve` gets `NetRequest` and `NetResponse` for the handler function argument and return value
   - `process.spawn` gets `ProcessSpawnOptions` for its third and optional parameter
 
-### Changed
+#### Changed
 
 - Reorganize repository structure to take advantage of cargo workspaces, improves compile times
 
-## `0.2.1` - February 3rd, 2023
+### `0.2.1` - February 3rd, 2023
 
-### Added
+#### Added
 
 - Added support for string interpolation syntax (update to Luau 0.561)
 - Added network server functionality using `net.serve`
@@ -954,18 +958,18 @@ This release adds some new features and fixes for the `roblox` built-in.
   end)
   ```
 
-### Changed
+#### Changed
 
 - Improved type definitions file for Selene, now including constants like `process.env` + tags such as `readonly` and `mustuse` wherever applicable
 
-### Fixed
+#### Fixed
 
 - Fixed type definitions file for Selene not including all API members and parameters
 - Fixed `process.exit` exiting at the first yield instead of exiting instantly as it should
 
-## `0.2.0` - January 28th, 2023
+### `0.2.0` - January 28th, 2023
 
-### Added
+#### Added
 
 - Added full documentation for all global APIs provided by Lune! This includes over 200 lines of pure documentation about behavior & error cases for all of the current 35 constants & functions. Check the [README](/README.md) to find out how to enable documentation in your editor.
 
@@ -978,50 +982,50 @@ This release adds some new features and fixes for the `roblox` built-in.
 
 - Added `process.cwd`, the path to the current working directory in which the Lune script is running
 
-## `0.1.3` - January 25th, 2023
+### `0.1.3` - January 25th, 2023
 
-### Added
+#### Added
 
 - Added a `--list` subcommand to list scripts found in the `lune` or `.lune` directory.
 
-## `0.1.2` - January 24th, 2023
+### `0.1.2` - January 24th, 2023
 
-### Added
+#### Added
 
 - Added automatic publishing of the Lune library to [crates.io](https://crates.io/crates/lune)
 
-### Fixed
+#### Fixed
 
 - Fixed scripts that terminate instantly sometimes hanging
 
-## `0.1.1` - January 24th, 2023
+### `0.1.1` - January 24th, 2023
 
-### Fixed
+#### Fixed
 
 - Fixed errors containing `./` and / or `../` in the middle of file paths
 - Potential fix for spawned processes that yield erroring with "attempt to yield across metamethod/c-call boundary"
 
-## `0.1.0` - January 24th, 2023
+### `0.1.0` - January 24th, 2023
 
-### Added
+#### Added
 
 - `task` now supports passing arguments in `task.spawn` / `task.delay` / `task.defer`
 - `require` now uses paths relative to the file instead of being relative to the current directory, which is consistent with almost all other languages but not original Lua / Luau - this is a breaking change but will allow for proper packaging of third-party modules and more in the future.
   - **_NOTE:_** _If you still want to use the default Lua behavior instead of relative paths, set the environment variable `LUAU_PWD_REQUIRE` to `true`_
 
-### Changed
+#### Changed
 
 - Improved error message when an invalid file path is passed to `require`
 - Much improved error formatting and stack traces
 
-### Fixed
+#### Fixed
 
 - Fixed downloading of type definitions making json files instead of the proper format
 - Process termination will now always make sure all lua state is cleaned up before exiting, in all cases
 
-## `0.0.6` - January 23rd, 2023
+### `0.0.6` - January 23rd, 2023
 
-### Added
+#### Added
 
 - Initial implementation of [Roblox's task library](https://create.roblox.com/docs/reference/engine/libraries/task), with some caveats:
 
@@ -1037,47 +1041,47 @@ This release adds some new features and fixes for the `roblox` built-in.
 
   If any of the abovementioned things do not work as expected, it is a bug, please file an issue!
 
-### Fixed
+#### Fixed
 
 - Potential fix for spawned processes that yield erroring with "attempt to yield across metamethod/c-call boundary"
 
-## `0.0.5` - January 22nd, 2023
+### `0.0.5` - January 22nd, 2023
 
-### Added
+#### Added
 
 - Added full test suites for all Lune globals to ensure correct behavior
 - Added library version of Lune that can be used from other Rust projects
 
-### Changed
+#### Changed
 
 - Large internal changes to allow for implementing the `task` library.
 - Improved general formatting of errors to make them more readable & glanceable
 - Improved output formatting of non-primitive types
 - Improved output formatting of empty tables
 
-### Fixed
+#### Fixed
 
 - Fixed double stack trace for certain kinds of errors
 
-## `0.0.4` - January 21st, 2023
+### `0.0.4` - January 21st, 2023
 
-### Added
+#### Added
 
 - Added `process.args` for inspecting values given to Lune when running (read only)
 - Added `process.env` which is a plain table where you can get & set environment variables
 
-### Changed
+#### Changed
 
 - Improved error formatting & added proper file name to stack traces
 
-### Removed
+#### Removed
 
 - Removed `...` for process arguments, use `process.args` instead
 - Removed individual functions for getting & setting environment variables, use `process.env` instead
 
-## `0.0.3` - January 20th, 2023
+### `0.0.3` - January 20th, 2023
 
-### Added
+#### Added
 
 - Added networking functions under `net`
 
@@ -1125,19 +1129,19 @@ This release adds some new features and fixes for the `roblox` built-in.
   tag together with any data given to them: `console.info`, `console.warn`, `console.error` -
   These print out prefix tags `[INFO]`, `[WARN]`, `[ERROR]` in blue, orange, and red, respectively.
 
-### Changed
+#### Changed
 
 - The `json` api is now part of `net`
   - `json.encode` becomes `net.jsonEncode`
   - `json.decode` become `net.jsonDecode`
 
-### Fixed
+#### Fixed
 
 - Fixed JSON decode not working properly
 
-## `0.0.2` - January 19th, 2023
+### `0.0.2` - January 19th, 2023
 
-### Added
+#### Added
 
 - Added support for command-line parameters to scripts
 
@@ -1156,6 +1160,6 @@ This release adds some new features and fixes for the `roblox` built-in.
   These files will be downloaded as `lune.yml` and `luneTypes.d.luau`
   respectively and are also available in each release on GitHub.
 
-## `0.0.1` - January 18th, 2023
+### `0.0.1` - January 18th, 2023
 
 Initial Release
